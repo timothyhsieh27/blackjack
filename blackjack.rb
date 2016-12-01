@@ -45,7 +45,7 @@ def select_dealer_card(dealer, ace, royals, normals, dealstorage)
   dealstorage << dealer
 end
 
-def hard_advice(firststorage, secondstorage, both, dealer)
+def generate_advice_hard_hand(firststorage, secondstorage, both, dealer)
   if (firststorage[0].to_i != 11) && (secondstorage[0].to_i != 11)
     report_hard_hand
     calculate_advice_hard_hand
@@ -62,7 +62,7 @@ def calculate_advice_hard_hand
   end
 end
 
-def soft_advice(firststorage, secondstorage, both, dealer)
+def generate_advice_soft_hand(firststorage, secondstorage, both, dealer)
   if (firststorage[0].to_i == 11) || (secondstorage[0].to_i == 11)
     report_soft_hand
     calculate_advice_soft_hand
@@ -103,8 +103,8 @@ loop do
   select_first_card(first_choice, ace_card, royal_cards, normal_cards, first_card)
   select_second_card(second_choice, ace_card, royal_cards, normal_cards, second_card)
   select_dealer_card(dealer_choice, ace_card, royal_cards, normal_cards, dealer_card)
-  hard_advice(first_card, second_card, both_cards, dealer_total)
-  soft_advice(first_card, second_card, both_cards, dealer_total)
+  generate_advice_hard_hand(first_card, second_card, both_cards, dealer_total)
+  generate_advice_soft_hand(first_card, second_card, both_cards, dealer_total)
 # p first_card UNMUTE to test input
 # p second_card UNMUTE to test input
 # p dealer_card UNMUTE to test input
